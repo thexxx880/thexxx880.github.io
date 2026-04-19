@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinexia - Redirección automática</title>
+    <title>LzPlay</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap');
 
@@ -101,6 +101,7 @@
             z-index: -1;
         }
     </style>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
 </head>
 <body>
     <!-- Mensaje que solo se muestra en PC / Windows / Linux / Mac -->
@@ -111,11 +112,11 @@
         
         <div class="compatible">
             <div class="device">
-                <span>🤖</span>
+                <span></span>
                 <span>Android</span>
             </div>
             <div class="device">
-                <span></span>
+                <span></span>
                 <span>iPhone / iOS</span>
             </div>
         </div>
@@ -132,18 +133,15 @@
     <div class="background"></div>
 
     <script>
-        // === DETECCIÓN DE DISPOSITIVO ===
         function detectarDispositivo() {
             const ua = navigator.userAgent || navigator.vendor || window.opera;
 
-            // 1. Android (cualquier navegador Android)
             if (/android/i.test(ua)) {
                 console.log("✅ Dispositivo Android detectado → Redirigiendo...");
                 window.location.href = "https://lzrdrz10.github.io/Cinexia.V.9.0/";
                 return;
             }
 
-            // 2. iOS (iPhone, iPad, iPod)
             if (/iPad|iPhone|iPod/i.test(ua) || 
                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
                 console.log("✅ Dispositivo iOS detectado → Redirigiendo...");
@@ -151,15 +149,12 @@
                 return;
             }
 
-            // 3. Cualquier otro dispositivo (PC Windows, Linux, Mac, etc.)
             console.log("ℹ️  Dispositivo no compatible (PC) → Mostrando mensaje");
-            document.body.style.display = "flex"; // Mostramos el mensaje bonito
+            document.body.style.display = "flex"; 
         }
 
-        // Ejecutar la detección inmediatamente
         window.onload = detectarDispositivo;
 
-        // También lo ejecutamos por si acaso (seguridad extra)
         detectarDispositivo();
     </script>
 </body>
