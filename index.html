@@ -1,292 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="LzPlay!">
-<meta name="theme-color" content="#e50914">
-<title>LzPlayLog</title>
-<link rel="shortcut icon" href="img/favicon.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<!-- ====================== PWA - MANIFEST CORREGIDO ====================== -->
-<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22LzPlay%21%22%2C%22short_name%22%3A%22LzPlay%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23000000%22%2C%22theme_color%22%3A%22%23e50914%22%2C%22description%22%3A%22LzPlay%21%20es%20una%20aplicaci%C3%B3n%20de%20entretenimiento%20gratuita%20donde%20puedes%20disfrutar%20pel%C3%ADculas%20y%20series%20sin%20suscripciones%2C%20sin%20pagos%20y%20sin%20anuncios%2C%20todo%20de%20forma%20r%C3%A1pida%20y%20sencilla%20en%20un%20solo%20lugar.%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fblogger.googleusercontent.com%2Fimg%2Fb%2FR29vZ2xl%2FAVVXsEhQRGlFxe3v45gb--Z63FxVPZT1rXWxoR4MkszhJKMC3TIZz6Vq4FJbFifEH6e1wKWb3I1FG7ldeMpQkQGg42bZcWvoxTtP3vYYutoTPhH6dt6QYPnGcHBCy6slwDebHLlwxRGcuI6HkxkoJIwyLMWbqnccAb8t-wBHSNvdCBva4Lblq8V96nPUiBOAdd3L%2Fs1290%2FImagen%2520de%2520WhatsApp%25202025-08-27%2520a%2520las%252011.30.04_0601b9e6.jpg%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fjpeg%22%2C%22purpose%22%3A%22any%22%7D%5D%2C%22id%22%3A%22LzPlay%21%22%2C%22scope%22%3A%22.%22%2C%22lang%22%3A%22es%22%2C%22categories%22%3A%5B%22entertainment%22%5D%7D">
-<link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQRGlFxe3v45gb--Z63FxVPZT1rXWxoR4MkszhJKMC3TIZz6Vq4FJbFifEH6e1wKWb3I1FG7ldeMpQkQGg42bZcWvoxTtP3vYYutoTPhH6dt6QYPnGcHBCy6slwDebHLlwxRGcuI6HkxkoJIwyLMWbqnccAb8t-wBHSNvdCBva4Lblq8V96nPUiBOAdd3L/s1290/Imagen%20de%20WhatsApp%202025-08-27%20a%20las%2011.30.04_0601b9e6.jpg">
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap");
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Roboto',sans-serif;background:#000;min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;}
-.bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;transition:opacity 1.5s ease;}
-.overlay{position:absolute;inset:0;background:rgba(0,0,0,.65);z-index:1;}
-.logo{position:absolute;top:5px;left:5px;width:180px;z-index:3;}
-.form-wrapper{position:relative;z-index:2;background:rgba(0,0,0,.0%);backdrop-filter:blur(12px);padding:60px 68px 40px;border-radius:8px;width:100%;max-width:420px;animation:fadeIn 1s ease;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-h2{color:#fff;text-align:center;margin-bottom:28px;font-size:28px;}
-.form-control{position:relative;margin-bottom:20px;}
-.form-control input{width:100%;height:56px;background:#333;border:none;border-radius:4px;color:#fff;padding:0 50px 0 50px;font-size:16px;}
-.form-control input:focus{background:#444;outline:none;}
-.form-control i.left-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:#aaa;z-index:2;}
-.form-control label{position:absolute;left:50px;top:50%;transform:translateY(-50%);color:#aaa;transition:.2s;pointer-events:none;font-size:16px;}
-.form-control input:focus ~ label,.form-control input:not(:placeholder-shown) ~ label{top:12px;font-size:12px;color:#ccc;}
-.toggle-pass{position:absolute;right:15px;top:50%;transform:translateY(-50%);color:#aaa;cursor:pointer;font-size:18px;z-index:3;transition:.2s;}
-.toggle-pass:hover{color:#fff;transform:translateY(-50%) scale(1.1);}
-button{width:100%;padding:16px;margin-top:20px;background:#e50914;border:none;color:#fff;font-weight:bold;cursor:pointer;border-radius:4px;font-size:16px;}
-button:hover{background:#f6121d}
-button:disabled{opacity:.7;cursor:not-allowed}
-.error{color:#e50914;margin-bottom:15px;text-align:center;font-size:14px;min-height:20px;}
-.toggle-link{color:#fff;text-align:center;display:block;margin-top:20px;cursor:pointer;text-decoration:underline;}
-.toggle-link:hover{color:#b3b3b3}
-#reset-pass{display:none;margin-bottom:10px;background:#333;}
-.hidden { display: none !important; }
-#quick-panel { text-align: center; padding: 20px 0; }
-#quick-panel h2 { font-size: 26px; margin-bottom: 8px; }
-#quick-panel .email { font-size: 15px; color: #aaa; margin-bottom: 30px; word-break: break-all; }
-#quick-panel button { margin: 12px 0; font-size: 17px; padding: 18px; }
-#quick-panel .btn-logout { background: transparent; border: 2px solid #666; color: #ccc; }
-#quick-panel .btn-logout:hover { background: #333; border-color: #fff; color: #fff; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinexia - Redirección automática</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: #ffffff;
+            height: 100vh;
+            width: 100vw;
+            display: none; /* Se muestra solo en PC */
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .message-container {
+            text-align: center;
+            max-width: 480px;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        }
+
+        .icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 24px;
+            background: rgba(239, 68, 68, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: 18px;
+            opacity: 0.85;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        .compatible {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .device {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            font-size: 14px;
+            opacity: 0.6;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Efecto de partículas sutil */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
-<div class="bg" id="bg1"></div>
-<div class="bg" id="bg2" style="opacity:0;"></div>
-<div class="overlay"></div>
-<img class="logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3dK3-XAKrEia-lWmiUqAYRfFQ1lR9eJX6ZZH8e_vHf576qf9GJjIWBW9Jg5LsilXX7WO2MOEkg5gzc4pESziaPeMJ9ws9mwtCDdp3p_17D0e0Uop_ZxavwwJeNLBvoyZJ0cxTKQpjzrJIR6LjJslB24tj-77AYrRCacQ3F2S2VPoXpPzPhM1zndxyd1Rg/s3307/B64D5386-DCA4-410B-A0A6-6ACB19D0A06F.png">
-<div class="form-wrapper">
-  <!-- Panel rápido se mantiene por si hay error, pero ya no se muestra automáticamente -->
-  <div id="quick-panel" class="hidden">
-    <h2>Bienvenido de nuevo</h2>
-    <p class="email">Iniciarás sesión con:</p>
-    <p id="saved-email-display" class="email text-white font-medium"></p>
-    <button onclick="autoLogin()">Iniciar sesión</button>
-    <button onclick="logout()" class="btn-logout">Cerrar sesión / Usar otra cuenta</button>
-  </div>
-  <div id="normal-form">
-    <h2 id="form-title">Iniciar sesión</h2>
-    <div id="error-msg" class="error"></div>
-    <button id="reset-pass">Restablecer contraseña</button>
-    <form id="auth-form">
-        <div class="form-control">
-            <i class="fas fa-envelope left-icon"></i>
-            <input type="email" id="email" required placeholder=" ">
-            <label>Correo electrónico</label>
+    <!-- Mensaje que solo se muestra en PC / Windows / Linux / Mac -->
+    <div class="message-container">
+        <div class="icon">📱</div>
+        <h1>Esta página no está disponible<br>para tu dispositivo</h1>
+        <p>Dispositivos compatibles únicamente:</p>
+        
+        <div class="compatible">
+            <div class="device">
+                <span>🤖</span>
+                <span>Android</span>
+            </div>
+            <div class="device">
+                <span></span>
+                <span>iPhone / iOS</span>
+            </div>
         </div>
-        <div class="form-control">
-            <i class="fas fa-lock left-icon"></i>
-            <input type="password" id="password" required placeholder=" ">
-            <label>Contraseña</label>
-            <i class="fas fa-eye toggle-pass" id="togglePass"></i>
-        </div>
-        <button id="submit-btn">Iniciar sesión</button>
-    </form>
-    <a id="toggle-link" class="toggle-link">¿Nuevo en LzPlay? Regístrate</a>
-  </div>
-</div>
 
-<script type="module">
-/* ==================== TMDB Background ==================== */
-const TMDB_API_KEY = "38e497c6c1a043d1341416e80915669f";
-const IMG = "https://image.tmdb.org/t/p/original";
-let images = [], index = 0, active = 1;
+        <p style="margin-top: 30px; font-size: 15px; opacity: 0.7;">
+            Por favor, abre este enlace desde tu celular Android o iPhone.
+        </p>
+    </div>
 
-async function loadImages() {
-    try {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API_KEY}&language=es-ES`);
-        const data = await res.json();
-        images = data.results.slice(0, 5).map(m => IMG + m.backdrop_path).filter(u => u);
-        if (images.length > 0) {
-            document.getElementById("bg1").style.backgroundImage = `url(${images[0]})`;
-            startRotation();
+    <div class="footer">
+        Cinexia • Solo móviles compatibles
+    </div>
+
+    <div class="background"></div>
+
+    <script>
+        // === DETECCIÓN DE DISPOSITIVO ===
+        function detectarDispositivo() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+            // 1. Android (cualquier navegador Android)
+            if (/android/i.test(ua)) {
+                console.log("✅ Dispositivo Android detectado → Redirigiendo...");
+                window.location.href = "https://lzrdrz10.github.io/Cinexia.V.9.0/";
+                return;
+            }
+
+            // 2. iOS (iPhone, iPad, iPod)
+            if (/iPad|iPhone|iPod/i.test(ua) || 
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+                console.log("✅ Dispositivo iOS detectado → Redirigiendo...");
+                window.location.href = "https://lzrdrz10.github.io/log";
+                return;
+            }
+
+            // 3. Cualquier otro dispositivo (PC Windows, Linux, Mac, etc.)
+            console.log("ℹ️  Dispositivo no compatible (PC) → Mostrando mensaje");
+            document.body.style.display = "flex"; // Mostramos el mensaje bonito
         }
-    } catch (e) { console.error(e); }
-}
 
-function startRotation() {
-    setInterval(() => {
-        index = (index + 1) % images.length;
-        const bg1 = document.getElementById("bg1");
-        const bg2 = document.getElementById("bg2");
-        const next = images[index];
-        if (active === 1) {
-            bg2.style.backgroundImage = `url(${next})`;
-            bg2.style.opacity = 1;
-            bg1.style.opacity = 0;
-            active = 2;
-        } else {
-            bg1.style.backgroundImage = `url(${next})`;
-            bg1.style.opacity = 1;
-            bg2.style.opacity = 0;
-            active = 1;
-        }
-    }, 5000);
-}
+        // Ejecutar la detección inmediatamente
+        window.onload = detectarDispositivo;
 
-/* ==================== FIREBASE ==================== */
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyDA6mRLGymepNx3EXoCOH7CUiBXd6syGeg",
-    authDomain: "sign-in-method-b7675.firebaseapp.com",
-    projectId: "sign-in-method-b7675",
-    appId: "1:713340652755:web:57fc07b795dc503391d826"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-/* ==================== ELEMENTOS Y FUNCIONES ==================== */
-const normalForm = document.getElementById("normal-form");
-const quickPanel = document.getElementById("quick-panel");
-const savedEmailDisplay = document.getElementById("saved-email-display");
-const form = document.getElementById("auth-form");
-const title = document.getElementById("form-title");
-const toggle = document.getElementById("toggle-link");
-const btn = document.getElementById("submit-btn");
-const errorBox = document.getElementById("error-msg");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const togglePass = document.getElementById("togglePass");
-const resetBtn = document.getElementById("reset-pass");
-
-let isLogin = true;
-
-/* ==================== CREDENCIALES ==================== */
-function saveCredentials(email, password) {
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
-}
-
-function clearCredentials() {
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
-    emailInput.value = "";
-    passwordInput.value = "";
-}
-
-/* ==================== NUEVA LÓGICA: REDIRECCIÓN AUTOMÁTICA ==================== */
-function checkSavedCredentials() {
-    const savedEmail = localStorage.getItem("email");
-    const savedPass = localStorage.getItem("password");
-
-    if (savedEmail && savedPass) {
-        // === REDIRECCIÓN AUTOMÁTICA AL ABRIR LA PÁGINA ===
-        autoLogin();
-    } else {
-        // No hay credenciales guardadas → mostrar formulario normal
-        normalForm.classList.remove("hidden");
-        quickPanel.classList.add("hidden");
-    }
-}
-
-function redirectToMain(email, password) {
-    let redirectUrl = "https://www.lzplayhd.xyz";
-    const urlParams = new URLSearchParams(window.location.search);
-    const returnTo = urlParams.get("returnTo");
-    
-    if (returnTo) redirectUrl = decodeURIComponent(returnTo);
-
-    const separator = redirectUrl.includes("?") ? "&" : "?";
-    redirectUrl += `${separator}autoLogin=1&email=${encodeURIComponent(email)}&pass=${encodeURIComponent(password)}`;
-    
-    window.location.href = redirectUrl;
-}
-
-async function autoLogin() {
-    const email = localStorage.getItem("email");
-    const password = localStorage.getItem("password");
-    if (!email || !password) return;
-
-    try {
-        await signInWithEmailAndPassword(auth, email, password);
-        redirectToMain(email, password);   // ← Redirección inmediata
-    } catch (err) {
-        alert("Error al iniciar sesión automáticamente. Intenta con otra cuenta.");
-        clearCredentials();
-        checkSavedCredentials();   // Muestra el formulario normal
-    }
-}
-
-function logout() {
-    clearCredentials();
-    checkSavedCredentials();
-}
-
-/* ==================== LISTENERS ==================== */
-togglePass.addEventListener("click", () => {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        togglePass.classList.replace("fa-eye", "fa-eye-slash");
-    } else {
-        passwordInput.type = "password";
-        togglePass.classList.replace("fa-eye-slash", "fa-eye");
-    }
-});
-
-resetBtn.addEventListener("click", async () => {
-    const email = emailInput.value.trim();
-    if (!email) return errorBox.textContent = "Ingresa tu correo para restablecer la contraseña";
-    
-    try {
-        await sendPasswordResetEmail(auth, email);
-        errorBox.style.color = "#4CAF50";
-        errorBox.textContent = "Se envió un enlace de recuperación a tu correo. Revisa también el Spam.";
-        resetBtn.style.display = "none";
-    } catch (err) {
-        errorBox.textContent = "Error al enviar el correo";
-    }
-});
-
-toggle.addEventListener("click", () => {
-    isLogin = !isLogin;
-    title.textContent = isLogin ? "Iniciar sesión" : "Crear cuenta";
-    btn.textContent = isLogin ? "Iniciar sesión" : "Crear cuenta";
-    toggle.textContent = isLogin ? "¿Nuevo en LzPlay? Regístrate" : "¿Ya tienes cuenta? Inicia sesión";
-});
-
-form.addEventListener("submit", async e => {
-    e.preventDefault();
-    errorBox.textContent = "";
-    resetBtn.style.display = "none";
-    btn.textContent = "Cargando...";
-    btn.disabled = true;
-
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    try {
-        if (isLogin) {
-            await signInWithEmailAndPassword(auth, email, password);
-        } else {
-            await createUserWithEmailAndPassword(auth, email, password);
-        }
-        saveCredentials(email, password);
-        redirectToMain(email, password);
-    } catch (err) {
-        let message = "Error inesperado, intenta nuevamente";
-        switch (err.code) {
-            case "auth/invalid-credential": case "auth/wrong-password":
-                message = "Contraseña incorrecta"; resetBtn.style.display = "block"; break;
-            case "auth/user-not-found": message = "Este correo no está registrado"; break;
-            case "auth/email-already-in-use": message = "Este correo ya tiene una cuenta"; break;
-            case "auth/weak-password": message = "La contraseña debe tener al menos 6 caracteres"; break;
-            case "auth/invalid-email": message = "Correo inválido"; break;
-        }
-        errorBox.textContent = message;
-    }
-
-    btn.textContent = isLogin ? "Iniciar sesión" : "Crear cuenta";
-    btn.disabled = false;
-});
-
-/* ==================== INICIO AUTOMÁTICO ==================== */
-window.onload = () => {
-    loadImages();
-    checkSavedCredentials();   // ← Aquí se decide la redirección automática
-};
-
-window.autoLogin = autoLogin;
-window.logout = logout;
-</script>
+        // También lo ejecutamos por si acaso (seguridad extra)
+        detectarDispositivo();
+    </script>
 </body>
 </html>
