@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LzPlay</title>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
         * {
             margin: 0;
@@ -16,10 +17,10 @@
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
-            color: #ffffff;
+            color: #fff;
             height: 100vh;
             width: 100vw;
-            display: none; /* Se muestra solo en PC */
+            display: none;
             align-items: center;
             justify-content: center;
             overflow: hidden;
@@ -30,10 +31,10 @@
             text-align: center;
             max-width: 480px;
             padding: 40px 30px;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255,255,255,0.06);
             border-radius: 24px;
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.1);
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
         }
 
@@ -41,7 +42,7 @@
             width: 90px;
             height: 90px;
             margin: 0 auto 24px;
-            background: rgba(239, 68, 68, 0.15);
+            background: rgba(239,68,68,0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -58,104 +59,130 @@
 
         p {
             font-size: 18px;
-            opacity: 0.85;
+            opacity: .85;
             line-height: 1.5;
-            margin-bottom: 32px;
+            margin-bottom: 22px;
         }
 
         .compatible {
             display: flex;
-            gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 16px;
         }
 
         .device {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
             padding: 10px 20px;
             border-radius: 9999px;
             font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .footer {
             position: absolute;
             bottom: 30px;
             font-size: 14px;
-            opacity: 0.6;
+            opacity: .6;
             text-align: center;
             width: 100%;
         }
-
-        /* Efecto de partículas sutil */
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: -1;
-        }
     </style>
-    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+
+    <!-- Bloqueo avanzado de herramientas de desarrollador (oficial y recomendado) -->
+    <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
 </head>
 <body>
-    <!-- Mensaje que solo se muestra en PC / Windows / Linux / Mac -->
-    <div class="message-container">
-        <div class="icon">📱</div>
-        <h1>Esta página no está disponible<br>para tu dispositivo</h1>
-        <p>Dispositivos compatibles únicamente:</p>
-        
-        <div class="compatible">
-            <div class="device">
-                <span></span>
-                <span>Android</span>
-            </div>
-            <div class="device">
-                <span></span>
-                <span>iPhone / iOS</span>
-            </div>
-        </div>
 
-        <p style="margin-top: 30px; font-size: 15px; opacity: 0.7;">
-            Por favor, abre este enlace desde tu celular Android o iPhone.
-        </p>
+<div class="message-container">
+    <div class="icon">📱</div>
+
+    <h1>Aplicación no disponible<br>para este dispositivo</h1>
+
+    <p id="mensaje">
+        Esta aplicación únicamente está disponible para dispositivos Android.
+    </p>
+
+    <div class="compatible">
+        <div class="device">✅ Android</div>
     </div>
 
-    <div class="footer">
-        Cinexia • Solo móviles compatibles
-    </div>
+    <p style="margin-top:25px;font-size:15px;opacity:.7;">
+        Abre este enlace desde un teléfono o tablet Android.
+    </p>
+</div>
 
-    <div class="background"></div>
+<div class="footer">
+    Cinexia • Solo Android compatible
+</div>
 
-    <script>
-        function detectarDispositivo() {
-            const ua = navigator.userAgent || navigator.vendor || window.opera;
+<script>
+    /**
+     * Versión optimizada y limpia del detector de dispositivo
+     * - Más legible y mantenible
+     * - Sin redundancias
+     * - Uso de location.replace (mejor UX al no guardar en historial)
+     * - Todo el bloqueo de devtools se mantiene intacto y actualizado
+     */
+    function detectarDispositivo() {
+        const ua = (navigator.userAgent || navigator.vendor || window.opera || '').toLowerCase();
 
-            if (/android/i.test(ua)) {
-                console.log("✅ Dispositivo Android detectado → Redirigiendo...");
-                window.location.href = "https://lzrdrz10.github.io/Cinexia.V.9.0/";
-                return;
-            }
-
-            if (/iPad|iPhone|iPod/i.test(ua) || 
-                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
-                console.log("✅ Dispositivo iOS detectado → Redirigiendo...");
-                window.location.href = "https://lzrdrz10.github.io/log";
-                return;
-            }
-
-            console.log("ℹ️  Dispositivo no compatible (PC) → Mostrando mensaje");
-            document.body.style.display = "flex"; 
+        // 1. Si es Android → redirigir inmediatamente a la app
+        if (/android/i.test(ua)) {
+            window.location.replace("https://lzrdrz10.github.io/Cinexia.V.9.0/");
+            return;
         }
 
-        window.onload = detectarDispositivo;
+        // 2. Cualquier otro dispositivo (iOS, PC, etc.) → mostrar mensaje
+        document.getElementById("mensaje").innerHTML = `
+            Esta aplicación únicamente está disponible para dispositivos Android.<br>
+            <span style="font-size:15px;opacity:0.8;display:block;margin-top:8px;">
+                Abre este enlace desde un teléfono o tablet Android.
+            </span>
+        `;
+        
+        document.body.style.display = "flex";
+    }
 
-        detectarDispositivo();
-    </script>
+    // Ejecutar al cargar la página
+    window.onload = detectarDispositivo;
+
+    // ========================
+    // BLOQUEOS EXTRA DE SEGURIDAD
+    // ========================
+
+    // Desactivar clic derecho
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    // Bloquear atajos comunes de devtools
+    document.addEventListener("keydown", e => {
+        if (e.key === "F12") {
+            e.preventDefault();
+            return;
+        }
+
+        // Ctrl + Shift + I, J, C
+        if (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) {
+            e.preventDefault();
+            return;
+        }
+
+        // Ctrl + U (ver código fuente)
+        if (e.ctrlKey && e.key.toUpperCase() === "U") {
+            e.preventDefault();
+            return;
+        }
+    });
+
+    // Detectar apertura del inspector por diferencia de tamaño de ventana (muy efectivo)
+    setInterval(() => {
+        if (
+            window.outerWidth - window.innerWidth > 160 ||
+            window.outerHeight - window.innerHeight > 160
+        ) {
+            document.body.innerHTML = ""; // Borra todo el contenido
+        }
+    }, 1000);
+</script>
+
 </body>
 </html>
