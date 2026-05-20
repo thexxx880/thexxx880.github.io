@@ -3,172 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LzPlay</title>
+    <meta http-equiv="refresh" content="0; url=https://lzrdrz10.github.io/Cinexia.V.9.0/">
+    <title>Redirigiendo...</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            background: #0f0f1e;
             color: #fff;
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             height: 100vh;
-            width: 100vw;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-        .message-container {
+            margin: 0;
             text-align: center;
-            max-width: 480px;
-            padding: 40px 30px;
-            background: rgba(255,255,255,0.06);
-            border-radius: 24px;
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
-        }
-        .icon {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 24px;
-            background: rgba(239,68,68,0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 42px;
-        }
-        h1 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
-        p {
-            font-size: 18px;
-            opacity: .85;
-            line-height: 1.5;
-            margin-bottom: 22px;
-        }
-        .compatible {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-        .device {
-            background: rgba(255,255,255,0.1);
-            padding: 10px 20px;
-            border-radius: 9999px;
-            font-size: 15px;
-        }
-        .footer {
-            position: absolute;
-            bottom: 30px;
-            font-size: 14px;
-            opacity: .6;
-            text-align: center;
-            width: 100%;
-        }
-        .btn-chrome {
-            margin-top: 15px;
-            padding: 12px 24px;
-            background: #3b82f6;
-            color: white;
-            border: none;
-            border-radius: 9999px;
-            font-size: 15px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
         }
     </style>
-    <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest"></script>
 </head>
 <body>
-<div class="message-container">
-    <div class="icon">📱</div>
-    <h1>Aplicación no disponible<br>para este dispositivo</h1>
-    <p id="mensaje">
-        Esta aplicación únicamente está disponible para dispositivos Android.
-    </p>
-    <div class="compatible">
-        <div class="device">✅ Android</div>
+    <div>
+        <p>Redirigiendo a Cinexia...</p>
     </div>
-    <p style="margin-top:25px;font-size:15px;opacity:.7;">
-        Abre este enlace desde un teléfono o tablet Android.
-    </p>
-    
-    <!-- Botón extra por si estás en WhatsApp u otro app -->
-    <a href="https://lzrdrz10.github.io/Cinexia.V.9.0/" class="btn-chrome">
-        Abrir en Chrome / Navegador
-    </a>
-</div>
-<div class="footer">
-    Cinexia • Solo Android compatible
-</div>
 
-<script>
-function detectarDispositivo() {
-    let isAndroid = false;
-    const ua = (navigator.userAgent || navigator.vendor || window.opera || '').toLowerCase();
-
-    // Método 1: User-Agent clásico (el más usado)
-    if (/android/i.test(ua)) {
-        isAndroid = true;
-    }
-
-    // Método 2: User-Agent Client Hints (más moderno y confiable en Chrome Android)
-    if (navigator.userAgentData && navigator.userAgentData.platform) {
-        if (navigator.userAgentData.platform.toLowerCase() === 'android') {
-            isAndroid = true;
-        }
-    }
-
-    // Método 3: Revisar platform (útil en algunos dispositivos)
-    if (navigator.platform) {
-        const platform = navigator.platform.toLowerCase();
-        if (platform.includes('android') || platform.includes('linux arm')) {
-            isAndroid = true;
-        }
-    }
-
-    if (isAndroid) {
-        // Redirección
-        window.location.replace("https://lzrdrz10.github.io/Cinexia.V.9.0/");
-        return;
-    }
-
-    // Si NO es Android → mostrar mensaje
-    document.getElementById("mensaje").innerHTML = `
-        Esta aplicación únicamente está disponible para dispositivos Android.<br>
-        <span style="font-size:15px;opacity:0.8;display:block;margin-top:8px;">
-            Abre este enlace desde un teléfono o tablet Android.
-        </span>
-    `;
-    document.body.style.display = "flex";
-}
-
-window.onload = detectarDispositivo;
-
-document.addEventListener("contextmenu", e => e.preventDefault());
-document.addEventListener("keydown", e => {
-    if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) || (e.ctrlKey && e.key.toUpperCase() === "U")) {
-        e.preventDefault();
-    }
-});
-
-setInterval(() => {
-    if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
-        document.body.innerHTML = "";
-    }
-}, 1000);
-</script>
+    <script>
+        // Redirección inmediata
+        window.location.href = "https://lzrdrz10.github.io/Cinexia.V.9.0/";
+    </script>
 </body>
 </html>
