@@ -1,32 +1,252 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=https://lzrdrz10.github.io/Cinexia.V.9.0/">
-    <title>Redirigiendo...</title>
-    <style>
-        body {
-            background: #0f0f1e;
-            color: #fff;
-            font-family: system-ui, -apple-system, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <div>
-        <p>Redirigiendo a Cinexia...</p>
-    </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LzPlay! - Descarga la App</title>
 
-    <script>
-        // Redirección inmediata
-        window.location.href = "https://lzrdrz10.github.io/Cinexia.V.9.0/";
-    </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{color:#fff;overflow-x:hidden;background:#000;}
+
+/* FONDOS */
+.bg,.bg2{
+position:fixed;top:0;left:0;width:100%;height:100%;
+background-size:cover;background-position:center;
+transition:opacity 1.5s ease-in-out;z-index:-2;
+}
+.bg2{z-index:-3;opacity:0;}
+
+.overlay{
+position:fixed;width:100%;height:100%;
+background:linear-gradient(to top,#0f0f0f 30%,rgba(0,0,0,0.6));
+z-index:-1;
+}
+
+/* HEADER */
+header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;}
+.logo img{height:45px;}
+.btn-download{background:#00c3ff;padding:10px 18px;border-radius:8px;color:#000;text-decoration:none;font-weight:bold;}
+
+/* HERO */
+.hero{text-align:center;padding:80px 20px;}
+.hero img{max-width:120px;border-radius:15px;margin-bottom:20px;}
+.hero h1{font-size:2.5rem;margin-bottom:10px;}
+.hero p{color:#ddd;margin-bottom:20px;}
+
+/* NUEVO: CAJAS DE DESCARGA */
+.download-box{
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(6px);
+padding:20px;
+border-radius:12px;
+margin:20px auto;
+max-width:300px;
+}
+
+.download-box p{
+margin-bottom:10px;
+color:#ccc;
+font-size:0.9rem;
+}
+
+.main-btn{
+display:inline-block;
+background:#ff2e63;
+padding:12px 25px;
+border-radius:10px;
+color:#fff;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* FEATURES */
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+padding:40px 20px;
+}
+
+.card{
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(6px);
+padding:20px;
+border-radius:12px;
+text-align:center;
+}
+
+.card i{
+font-size:22px;
+margin-bottom:8px;
+color:#00c3ff;
+}
+
+@media(max-width:600px){
+.card i{font-size:18px;}
+.hero h1{font-size:1.8rem;}
+}
+
+/* CARRUSEL */
+.carousel-section{padding:20px;}
+.carousel-title{margin-bottom:10px;font-size:1.2rem;}
+
+.carousel{
+display:flex;
+gap:10px;
+overflow-x:auto;
+scroll-behavior:smooth;
+padding-bottom:10px;
+}
+
+.carousel::-webkit-scrollbar{display:none;}
+
+.movie{
+min-width:220px;
+height:120px;
+background-size:cover;
+background-position:center;
+border-radius:10px;
+flex-shrink:0;
+transition:transform 0.3s;
+}
+
+.movie:hover{transform:scale(1.08);}
+
+/* ABOUT */
+.about{padding:40px 20px;display:flex;justify-content:center;}
+.about-box{
+max-width:700px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(6px);
+padding:25px;
+border-radius:12px;
+text-align:center;
+}
+.about-box h2{margin-bottom:15px;color:#00c3ff;}
+.about-box p{color:#ccc;font-size:0.95rem;margin-bottom:10px;}
+
+/* FOOTER */
+footer{text-align:center;padding:20px;color:#aaa;}
+</style>
+</head>
+
+<body>
+
+<div class="bg" id="bg1"></div>
+<div class="bg2" id="bg2"></div>
+<div class="overlay"></div>
+
+<header>
+<div class="logo">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3dK3-XAKrEia-lWmiUqAYRfFQ1lR9eJX6ZZH8e_vHf576qf9GJjIWBW9Jg5LsilXX7WO2MOEkg5gzc4pESziaPeMJ9ws9mwtCDdp3p_17D0e0Uop_ZxavwwJeNLBvoyZJ0cxTKQpjzrJIR6LjJslB24tj-77AYrRCacQ3F2S2VPoXpPzPhM1zndxyd1Rg/s3307/B64D5386-DCA4-410B-A0A6-6ACB19D0A06F.png">
+</div>
+<a href="https://github.com/thexxx880/thexxx880.github.io/releases/download/LzPlay/Lzlay-No-ADS-v2.apk" class="btn-download">Descargar</a>
+</header>
+
+<section class="hero">
+
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxqh6dDlZGl6UDYlVfNxiMHkxI6Atmy4FUfGEUKlk1utlmsiRq9Z1ogu9vgRGyJ11cGoHuzqGgQgSp7dIYu65i11YHsYpVItqkE3PZF-6ppMdCIhwI-vnfsii7igrcGv3Syf4VKu526wCh1Qeni3FPAfPxDnxT_zqH6ktlXvt6d8tYeacF7cMXTZKHSthH/s1290/Imagen%20de%20WhatsApp%202025-08-27%20a%20las%2011.30.04_0601b9e6.jpg">
+
+<h1>Disfruta Películas y Series en LzPlay!</h1>
+<p>Contenido actualizado automáticamente con lo mejor del momento.</p>
+
+<!-- DESCARGA SIN ADS -->
+<div class="download-box">
+<p>Versión sin anuncios (Recomendada)</p>
+<a href="https://github.com/thexxx880/thexxx880.github.io/releases/download/LzPlay/Lzlay-No-ADS-v2.apk" class="main-btn">
+Descargar (No ADS)
+</a>
+</div>
+
+<!-- DESCARGA CON ADS 
+<div class="download-box">
+<p>Aplicación alternativa (Incluye anuncios de Appcreator24)</p>
+<a href="https://github.com/lzrdrz10/descargar-apk-lzplay/releases/download/LzPlay-1/LzPlay.apk" class="main-btn">
+Descargar versión ADS
+</a>
+</div>-->
+
+</section>
+
+<!-- CARRUSEL -->
+<section class="carousel-section">
+<h2 class="carousel-title">🔥 Tendencias</h2>
+<div class="carousel" id="carousel"></div>
+</section>
+
+<section class="features">
+<div class="card"><i class="fas fa-film"></i><h3>Películas</h3><p>Top populares en tiempo real.</p></div>
+<div class="card"><i class="fas fa-tv"></i><h3>Series</h3><p>Contenido actualizado automáticamente.</p></div>
+<div class="card"><i class="fas fa-fire"></i><h3>Tendencias</h3><p>Siempre lo más visto primero.</p></div>
+<div class="card"><i class="fas fa-mobile-alt"></i><h3>App</h3><p>Descarga rápida y segura.</p></div>
+</section>
+
+<section class="about">
+<div class="about-box">
+<h2>Sobre LzPlay!</h2>
+<p>LzPlay! es una aplicación de streaming creada para brindar entretenimiento sin complicaciones.</p>
+<p>No contiene pagos internos, ni suscripciones, ni anuncios molestos.</p>
+<p>No recopila datos personales ni accede a otras aplicaciones.</p>
+<p>Este proyecto fue creado con cariño para disfrutar del contenido libremente.</p>
+</div>
+</section>
+
+<footer>© 2026 LzPlay!</footer>
+
+<script>
+const API_KEY="38e497c6c1a043d1341416e80915669f";
+
+const bg1=document.getElementById("bg1");
+const bg2=document.getElementById("bg2");
+const carousel=document.getElementById("carousel");
+
+let active=1;
+
+async function init(){
+const res=await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=es-ES&page=1`);
+const data=await res.json();
+const movies=data.results;
+
+let i=0;
+
+function cambiar(){
+const img=`https://image.tmdb.org/t/p/original${movies[i].backdrop_path}`;
+
+if(active===1){
+bg2.style.backgroundImage=`url(${img})`;
+bg2.style.opacity=1;
+bg1.style.opacity=0;
+active=2;
+}else{
+bg1.style.backgroundImage=`url(${img})`;
+bg1.style.opacity=1;
+bg2.style.opacity=0;
+active=1;
+}
+
+i=(i+1)%movies.length;
+}
+
+cambiar();
+setInterval(cambiar,5000);
+
+/* CARRUSEL */
+movies.slice(0,7).forEach(m=>{
+if(!m.backdrop_path)return;
+const div=document.createElement("div");
+div.className="movie";
+div.style.backgroundImage=`url(https://image.tmdb.org/t/p/w500${m.backdrop_path})`;
+carousel.appendChild(div);
+});
+}
+
+init();
+</script>
+
 </body>
 </html>
