@@ -1,252 +1,335 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LzPlay! - Descarga la App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LzPlay! - Nueva Versión Disponible</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-red: #e50914;
+            --dark-bg: #141414;
+            --text-light: #e5e5e5;
+        }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
-body{color:#fff;overflow-x:hidden;background:#000;}
+        body {
+            color: #fff;
+            background-color: var(--dark-bg);
+            overflow-x: hidden;
+        }
 
-/* FONDOS */
-.bg,.bg2{
-position:fixed;top:0;left:0;width:100%;height:100%;
-background-size:cover;background-position:center;
-transition:opacity 1.5s ease-in-out;z-index:-2;
-}
-.bg2{z-index:-3;opacity:0;}
+        /* FONDOS DINÁMICOS */
+        .bg, .bg2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: top center;
+            transition: opacity 1.5s ease-in-out;
+            z-index: -3;
+        }
+        .bg2 { z-index: -4; opacity: 0; }
 
-.overlay{
-position:fixed;width:100%;height:100%;
-background:linear-gradient(to top,#0f0f0f 30%,rgba(0,0,0,0.6));
-z-index:-1;
-}
+        /* DEGRADADO ESTILO NETFLIX */
+        .vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(77deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 40%, transparent 85%),
+                        linear-gradient(to top, var(--dark-bg) 0%, transparent 20%);
+            z-index: -2;
+        }
 
-/* HEADER */
-header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;}
-.logo img{height:45px;}
-.btn-download{background:#00c3ff;padding:10px 18px;border-radius:8px;color:#000;text-decoration:none;font-weight:bold;}
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 4%;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+        .logo img { height: 45px; }
 
-/* HERO */
-.hero{text-align:center;padding:80px 20px;}
-.hero img{max-width:120px;border-radius:15px;margin-bottom:20px;}
-.hero h1{font-size:2.5rem;margin-bottom:10px;}
-.hero p{color:#ddd;margin-bottom:20px;}
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 4%;
+            max-width: 800px;
+        }
 
-/* NUEVO: CAJAS DE DESCARGA */
-.download-box{
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(6px);
-padding:20px;
-border-radius:12px;
-margin:20px auto;
-max-width:300px;
-}
+        .hero-badge {
+            display: inline-block;
+            background: rgba(229, 9, 20, 0.8);
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            width: fit-content;
+        }
 
-.download-box p{
-margin-bottom:10px;
-color:#ccc;
-font-size:0.9rem;
-}
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
-.main-btn{
-display:inline-block;
-background:#ff2e63;
-padding:12px 25px;
-border-radius:10px;
-color:#fff;
-text-decoration:none;
-font-weight:bold;
-}
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            max-width: 600px;
+        }
 
-/* FEATURES */
-.features{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-padding:40px 20px;
-}
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-red);
+            color: #fff;
+            padding: 12px 28px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.2s, transform 0.2s;
+            width: fit-content;
+        }
+        .btn-primary:hover {
+            background: #f40612;
+            transform: scale(1.05);
+        }
 
-.card{
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(6px);
-padding:20px;
-border-radius:12px;
-text-align:center;
-}
+        /* PARCHE / NOVEDADES */
+        .patch-notes {
+            padding: 40px 4%;
+            background: var(--dark-bg);
+            margin-top: -20px; /* Para solapar con el degradado */
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #e5e5e5;
+        }
 
-.card i{
-font-size:22px;
-margin-bottom:8px;
-color:#00c3ff;
-}
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
 
-@media(max-width:600px){
-.card i{font-size:18px;}
-.hero h1{font-size:1.8rem;}
-}
+        .feature-card {
+            background: #222;
+            padding: 25px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .feature-card:hover {
+            background: #333;
+        }
+        .feature-card i {
+            font-size: 28px;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            color: #a3a3a3;
+            font-size: 0.95rem;
+        }
 
-/* CARRUSEL */
-.carousel-section{padding:20px;}
-.carousel-title{margin-bottom:10px;font-size:1.2rem;}
+        /* CARRUSEL */
+        .carousel-section {
+            padding: 20px 4% 50px;
+            background: var(--dark-bg);
+        }
 
-.carousel{
-display:flex;
-gap:10px;
-overflow-x:auto;
-scroll-behavior:smooth;
-padding-bottom:10px;
-}
+        .carousel {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 10px 0;
+        }
 
-.carousel::-webkit-scrollbar{display:none;}
+        .carousel::-webkit-scrollbar { display: none; }
 
-.movie{
-min-width:220px;
-height:120px;
-background-size:cover;
-background-position:center;
-border-radius:10px;
-flex-shrink:0;
-transition:transform 0.3s;
-}
+        .movie {
+            min-width: 250px;
+            height: 140px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.3s ease, z-index 0.3s;
+            position: relative;
+        }
 
-.movie:hover{transform:scale(1.08);}
+        .movie:hover {
+            transform: scale(1.1);
+            z-index: 5;
+        }
 
-/* ABOUT */
-.about{padding:40px 20px;display:flex;justify-content:center;}
-.about-box{
-max-width:700px;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(6px);
-padding:25px;
-border-radius:12px;
-text-align:center;
-}
-.about-box h2{margin-bottom:15px;color:#00c3ff;}
-.about-box p{color:#ccc;font-size:0.95rem;margin-bottom:10px;}
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #737373;
+            background: #000;
+            font-size: 0.9rem;
+        }
 
-/* FOOTER */
-footer{text-align:center;padding:20px;color:#aaa;}
-</style>
+        @media(max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .vignette {
+                background: linear-gradient(to top, var(--dark-bg) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+            }
+            .hero { justify-content: flex-end; padding-bottom: 80px; }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="bg" id="bg1"></div>
-<div class="bg2" id="bg2"></div>
-<div class="overlay"></div>
+    <div class="bg" id="bg1"></div>
+    <div class="bg2" id="bg2"></div>
+    <div class="vignette"></div>
 
-<header>
-<div class="logo">
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3dK3-XAKrEia-lWmiUqAYRfFQ1lR9eJX6ZZH8e_vHf576qf9GJjIWBW9Jg5LsilXX7WO2MOEkg5gzc4pESziaPeMJ9ws9mwtCDdp3p_17D0e0Uop_ZxavwwJeNLBvoyZJ0cxTKQpjzrJIR6LjJslB24tj-77AYrRCacQ3F2S2VPoXpPzPhM1zndxyd1Rg/s3307/B64D5386-DCA4-410B-A0A6-6ACB19D0A06F.png">
-</div>
-<a href="https://github.com/thexxx880/thexxx880.github.io/releases/download/LzPlay/lzplay-v1.7.apk" class="btn-download">Descargar</a>
-</header>
+    <header>
+        <div class="logo">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3dK3-XAKrEia-lWmiUqAYRfFQ1lR9eJX6ZZH8e_vHf576qf9GJjIWBW9Jg5LsilXX7WO2MOEkg5gzc4pESziaPeMJ9ws9mwtCDdp3p_17D0e0Uop_ZxavwwJeNLBvoyZJ0cxTKQpjzrJIR6LjJslB24tj-77AYrRCacQ3F2S2VPoXpPzPhM1zndxyd1Rg/s3307/B64D5386-DCA4-410B-A0A6-6ACB19D0A06F.png" alt="LzPlay Logo">
+        </div>
+    </header>
 
-<section class="hero">
+    <section class="hero">
+        <div class="hero-badge">Actualización Obligatoria</div>
+        <h1>Es hora de actualizar LzPlay!</h1>
+        <p>Hemos lanzado una nueva versión con mejoras cruciales. Descarga la última actualización para disfrutar de una experiencia fluida, sin errores de reproducción y con un catálogo expandido.</p>
+        
+        <a href="https://lzplayhd.online/apple/LzPlay.apk" class="btn-primary">
+            <i class="fas fa-download"></i> Descargar Nueva Versión
+        </a>
+    </section>
 
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxqh6dDlZGl6UDYlVfNxiMHkxI6Atmy4FUfGEUKlk1utlmsiRq9Z1ogu9vgRGyJ11cGoHuzqGgQgSp7dIYu65i11YHsYpVItqkE3PZF-6ppMdCIhwI-vnfsii7igrcGv3Syf4VKu526wCh1Qeni3FPAfPxDnxT_zqH6ktlXvt6d8tYeacF7cMXTZKHSthH/s1290/Imagen%20de%20WhatsApp%202025-08-27%20a%20las%2011.30.04_0601b9e6.jpg">
+    <section class="patch-notes">
+        <h2 class="section-title">¿Qué hay de nuevo en esta versión?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-play-circle"></i>
+                <h3>Solución de Videos</h3>
+                <p>Se han corregido los enlaces caídos. Ahora el reproductor carga el contenido al instante y sin interrupciones.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-layer-group"></i>
+                <h3>Nuevos Apartados</h3>
+                <p>Explora categorías rediseñadas para encontrar tus películas, series y animes favoritos de forma más intuitiva.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-rocket"></i>
+                <h3>Mejor Rendimiento</h3>
+                <p>La aplicación está optimizada para consumir menos recursos, garantizando una navegación súper rápida.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-film"></i>
+                <h3>Más Contenido</h3>
+                <p>Hemos ampliado nuestra base de datos. Disfruta de una mayor variedad de títulos actualizados a diario.</p>
+            </div>
+        </div>
+    </section>
 
-<h1>Disfruta Películas y Series en LzPlay!</h1>
-<p>Contenido actualizado automáticamente con lo mejor del momento.</p>
+    <section class="carousel-section">
+        <h2 class="section-title">En Tendencia</h2>
+        <div class="carousel" id="carousel"></div>
+    </section>
 
-<!-- DESCARGA SIN ADS -->
-<div class="download-box">
-<p>Versión 1.7 (V7)</p>
-<a href="https://github.com/thexxx880/thexxx880.github.io/releases/download/LzPlay/lzplay-v1.7.apk" class="main-btn">
-Descargar (Ultima Versión)
-</a>
-</div>
+    <footer>
+        <p>LzPlay! no contiene pagos internos ni recopila datos personales.</p>
+        <p style="margin-top: 10px;">© 2026 LzPlay! Streaming</p>
+    </footer>
 
-<!-- DESCARGA CON ADS 
-<div class="download-box">
-<p>Aplicación alternativa (Incluye anuncios de Appcreator24)</p>
-<a href="https://github.com/lzrdrz10/descargar-apk-lzplay/releases/download/LzPlay-1/LzPlay.apk" class="main-btn">
-Descargar versión ADS
-</a>
-</div>-->
+    <script>
+        const API_KEY = "38e497c6c1a043d1341416e80915669f";
+        const bg1 = document.getElementById("bg1");
+        const bg2 = document.getElementById("bg2");
+        const carousel = document.getElementById("carousel");
 
-</section>
+        let active = 1;
 
-<!-- CARRUSEL -->
-<section class="carousel-section">
-<h2 class="carousel-title">🔥 Tendencias</h2>
-<div class="carousel" id="carousel"></div>
-</section>
+        async function init() {
+            try {
+                const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=es-ES&page=1`);
+                const data = await res.json();
+                const movies = data.results;
 
-<section class="features">
-<div class="card"><i class="fas fa-film"></i><h3>Películas</h3><p>Top populares en tiempo real.</p></div>
-<div class="card"><i class="fas fa-tv"></i><h3>Series</h3><p>Contenido actualizado automáticamente.</p></div>
-<div class="card"><i class="fas fa-fire"></i><h3>Tendencias</h3><p>Siempre lo más visto primero.</p></div>
-<div class="card"><i class="fas fa-mobile-alt"></i><h3>App</h3><p>Descarga rápida y segura.</p></div>
-</section>
+                let i = 0;
 
-<section class="about">
-<div class="about-box">
-<h2>Sobre LzPlay!</h2>
-<p>LzPlay! es una aplicación de streaming creada para brindar entretenimiento sin complicaciones.</p>
-<p>No contiene pagos internos, ni suscripciones, ni anuncios molestos.</p>
-<p>No recopila datos personales ni accede a otras aplicaciones.</p>
-<p>Este proyecto fue creado con cariño para disfrutar del contenido libremente.</p>
-</div>
-</section>
+                // FUNCIÓN CAMBIO DE FONDO (Más suave)
+                function cambiar() {
+                    if (!movies[i] || !movies[i].backdrop_path) return;
+                    
+                    const img = `https://image.tmdb.org/t/p/original${movies[i].backdrop_path}`;
 
-<footer>© 2026 LzPlay!</footer>
+                    if (active === 1) {
+                        bg2.style.backgroundImage = `url(${img})`;
+                        bg2.style.opacity = 1;
+                        bg1.style.opacity = 0;
+                        active = 2;
+                    } else {
+                        bg1.style.backgroundImage = `url(${img})`;
+                        bg1.style.opacity = 1;
+                        bg2.style.opacity = 0;
+                        active = 1;
+                    }
+                    i = (i + 1) % movies.length;
+                }
 
-<script>
-const API_KEY="38e497c6c1a043d1341416e80915669f";
+                cambiar();
+                setInterval(cambiar, 8000); // Aumentado a 8s para no distraer la lectura
 
-const bg1=document.getElementById("bg1");
-const bg2=document.getElementById("bg2");
-const carousel=document.getElementById("carousel");
+                // GENERAR CARRUSEL
+                movies.slice(0, 10).forEach(m => {
+                    if (!m.backdrop_path) return;
+                    const div = document.createElement("div");
+                    div.className = "movie";
+                    div.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${m.backdrop_path})`;
+                    carousel.appendChild(div);
+                });
+            } catch (error) {
+                console.error("Error cargando los datos de TMDB:", error);
+            }
+        }
 
-let active=1;
-
-async function init(){
-const res=await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=es-ES&page=1`);
-const data=await res.json();
-const movies=data.results;
-
-let i=0;
-
-function cambiar(){
-const img=`https://image.tmdb.org/t/p/original${movies[i].backdrop_path}`;
-
-if(active===1){
-bg2.style.backgroundImage=`url(${img})`;
-bg2.style.opacity=1;
-bg1.style.opacity=0;
-active=2;
-}else{
-bg1.style.backgroundImage=`url(${img})`;
-bg1.style.opacity=1;
-bg2.style.opacity=0;
-active=1;
-}
-
-i=(i+1)%movies.length;
-}
-
-cambiar();
-setInterval(cambiar,5000);
-
-/* CARRUSEL */
-movies.slice(0,7).forEach(m=>{
-if(!m.backdrop_path)return;
-const div=document.createElement("div");
-div.className="movie";
-div.style.backgroundImage=`url(https://image.tmdb.org/t/p/w500${m.backdrop_path})`;
-carousel.appendChild(div);
-});
-}
-
-init();
-</script>
+        init();
+    </script>
 
 </body>
 </html>
