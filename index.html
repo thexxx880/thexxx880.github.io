@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LzPlay</title>
+    <meta name="description" content="Películas y series, ahora en nueva versión. Descarga LzPlay gratis en https://lzplayhd.online">
+    <meta name="theme-color" content="#e50914">
+    <link rel="canonical" href="https://lzplayhd.online/">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+
+    <!-- Open Graph / compartir -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LzPlay">
+    <meta property="og:title" content="LzPlay — Películas y series gratis">
+    <meta property="og:description" content="Películas y series, ahora en nueva versión. Descarga LzPlay gratis.">
+    <meta property="og:url" content="https://lzplayhd.online/">
+    <meta property="og:image" content="https://lzplayhd.online/assets/share-cover.png">
+    <meta property="og:image:alt" content="LZPLAY!">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LzPlay — Películas y series gratis">
+    <meta name="twitter:description" content="Películas y series, ahora en nueva versión. Descarga LzPlay gratis.">
+    <meta name="twitter:image" content="https://lzplayhd.online/assets/share-cover.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="hero-shell">
+        <div class="hero-media" aria-hidden="true">
+            <div class="bg" id="bg"></div>
+            <div class="bg2" id="bg2"></div>
+            <div class="hero-glow"></div>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <header class="site-header">
+            <img class="logo" src="assets/lzplay-logo.png" alt="lzplay" width="160" height="40">
+            <div class="header-actions">
+                <button type="button" class="btn-share-header" data-share aria-label="Compartir LzPlay">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                        <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/>
+                    </svg>
+                    Compartir
+                </button>
+                <button type="button" class="btn-login" data-download>Descargar</button>
+            </div>
+        </header>
+
+        <main class="hero-content">
+            <img class="brand-mark" src="assets/lzplay-logo.png" alt="lzplay" width="320" height="80">
+            <h1>Películas y series, ahora en nueva versión</h1>
+            <p class="sub">Lista para descargar. Sin complicaciones.</p>
+            <p class="hero-cta-copy">Empieza a ver en segundos. Actualiza o instala LzPlay! gratis.</p>
+            <div class="cta-row">
+                <button type="button" class="btn-cta" data-download>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    Descargar ahora
+                </button>
+                <button type="button" class="btn-cta btn-cta--sm btn-share-header" data-share>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                        <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/>
+                    </svg>
+                    Compartir
+                </button>
+            </div>
+        </main>
+
+        <div class="curve" aria-hidden="true">
+            <div class="curve-inner"></div>
+        </div>
+    </div>
+
+    <div class="page">
+        <section class="section" aria-labelledby="trending-heading">
+            <h2 class="section-title" id="trending-heading">Tendencias</h2>
+            <ul class="trending-track" id="trending-track"></ul>
+        </section>
+
+        <section class="section" aria-labelledby="reasons-heading">
+            <h2 class="section-title" id="reasons-heading">Más motivos para actualizar</h2>
+            <div class="features">
+                <article class="feature">
+                    <button type="button" class="feature-shot" data-lightbox="assets/features/diseno-de-carga.jpeg" data-lightbox-alt="Pantalla de carga" aria-label="Ampliar pantalla de carga">
+                        <img src="assets/features/diseno-de-carga.jpeg" alt="Pantalla de carga" loading="lazy" width="360" height="780">
+                    </button>
+                    <h3>Carga limpia</h3>
+                    <p>Arranque rápido con la identidad LzPlay lista para empezar a ver.</p>
+                </article>
+                <article class="feature">
+                    <button type="button" class="feature-shot" data-lightbox="assets/features/diseno-home.jpeg" data-lightbox-alt="Pantalla de inicio de LzPlay" aria-label="Ampliar inicio">
+                        <img src="assets/features/diseno-home.jpeg" alt="Pantalla de inicio de LzPlay" loading="lazy" width="360" height="780">
+                    </button>
+                    <h3>Inicio renovado</h3>
+                    <p>Explora estrenos, Top 10 y recomendaciones personalizadas en un diseño claro.</p>
+                </article>
+                <article class="feature">
+                    <button type="button" class="feature-shot" data-lightbox="assets/features/contenido-movie.jpeg" data-lightbox-alt="Detalle de película" aria-label="Ampliar ficha de película">
+                        <img src="assets/features/contenido-movie.jpeg" alt="Detalle de película" loading="lazy" width="360" height="780">
+                    </button>
+                    <h3>Ficha de película</h3>
+                    <p>Sinopsis, duración, calidad HD, likes y reparto en una sola pantalla.</p>
+                </article>
+                <article class="feature">
+                    <button type="button" class="feature-shot" data-lightbox="assets/features/contenido-serie.jpeg" data-lightbox-alt="Detalle de serie" aria-label="Ampliar ficha de serie">
+                        <img src="assets/features/contenido-serie.jpeg" alt="Detalle de serie" loading="lazy" width="360" height="780">
+                    </button>
+                    <h3>Series y episodios</h3>
+                    <p>Continúa donde te quedaste y abre la lista completa de episodios fácil.</p>
+                </article>
+                <article class="feature">
+                    <button type="button" class="feature-shot" data-lightbox="assets/features/multiple-idioma.jpeg" data-lightbox-alt="Selección de idioma" aria-label="Ampliar idiomas">
+                        <img src="assets/features/multiple-idioma.jpeg" alt="Selección de idioma" loading="lazy" width="360" height="780">
+                    </button>
+                    <h3>Varios idiomas</h3>
+                    <p>Elige audio latino, castellano o inglés subtitulado al reproducir.</p>
+                </article>
+                <article class="feature">
+                    <button type="button" class="feature-shot feature-shot--landscape" data-lightbox="assets/features/reproductor-video.jpeg" data-lightbox-alt="Reproductor de video" aria-label="Ampliar reproductor">
+                        <img src="assets/features/reproductor-video.jpeg" alt="Reproductor de video" loading="lazy" width="780" height="360">
+                    </button>
+                    <h3>Reproductor completo</h3>
+                    <p>Controles claros, salto rápido, audio y pantalla completa mientras ves.</p>
+                </article>
+                <article class="feature">
+                    <button type="button" class="feature-shot" data-lightbox="assets/features/buscador.jpeg" data-lightbox-alt="Buscador de LzPlay" aria-label="Ampliar buscador">
+                        <img src="assets/features/buscador.jpeg" alt="Buscador de LzPlay" loading="lazy" width="360" height="780">
+                    </button>
+                    <h3>Buscador rápido</h3>
+                    <p>Encuentra películas y series al instante con resultados en cuadrícula y puntuaciones.</p>
+                </article>
+                <article class="feature">
+                    <button type="button" class="feature-shot" data-lightbox="assets/features/filtrado-buscador.jpeg" data-lightbox-alt="Filtros avanzados" aria-label="Ampliar filtros">
+                        <img src="assets/features/filtrado-buscador.jpeg" alt="Filtros avanzados" loading="lazy" width="360" height="780">
+                    </button>
+                    <h3>Filtros avanzados</h3>
+                    <p>Filtra por letra o año para llegar justo al título que quieres ver.</p>
+                </article>
+                <article class="feature">
+                    <button type="button" class="feature-shot" data-lightbox="assets/features/apartado-mi-lista.jpeg" data-lightbox-alt="Mi lista" aria-label="Ampliar mi lista">
+                        <img src="assets/features/apartado-mi-lista.jpeg" alt="Mi lista" loading="lazy" width="360" height="780">
+                    </button>
+                    <h3>Mi lista</h3>
+                    <p>Guarda tus favoritos y retoma el progreso de lo que estabas viendo.</p>
+                </article>
+                <article class="feature">
+                    <button type="button" class="feature-shot" data-lightbox="assets/features/diseno-kids.jpeg" data-lightbox-alt="Sección LzKids" aria-label="Ampliar modo Kids">
+                        <img src="assets/features/diseno-kids.jpeg" alt="Sección LzKids" loading="lazy" width="360" height="780">
+                    </button>
+                    <h3>Modo Kids</h3>
+                    <p>Espacio LzKIDS con contenido infantil, categorías y navegación sencilla.</p>
+                </article>
+                <article class="feature">
+                    <button type="button" class="feature-shot" data-lightbox="assets/features/menu-opciones.jpeg" data-lightbox-alt="Menú de cuenta" aria-label="Ampliar menú">
+                        <img src="assets/features/menu-opciones.jpeg" alt="Menú de cuenta" loading="lazy" width="360" height="780">
+                    </button>
+                    <h3>Cuenta y perfiles</h3>
+                    <p>Administra perfiles, plan Premium y solicita el contenido que falta.</p>
+                </article>
+            </div>
+        </section>
+
+        <div class="bottom-cta">
+            <p>¿Listo para ver? Descarga LzPlay! y empieza ya.</p>
+            <div class="cta-row">
+                <button type="button" class="btn-cta" data-download>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                    Descargar ahora
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="phone">¿Preguntas? Contáctanos desde la app o el sitio oficial.</p>
+        <ul class="footer-links">
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Centro de ayuda</a></li>
+            <li><a href="#">Cuenta</a></li>
+            <li><a href="#" data-share>Compartir LzPlay</a></li>
+            <li><a href="#" data-download>Descargar APK</a></li>
+            <li><a href="#">Privacidad</a></li>
+            <li><a href="#">Términos de uso</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+        <p class="footer-note">LzPlay! — página de descarga. Contenido visual de demostración.</p>
+    </footer>
+
+    <!-- Title modal -->
+    <div class="modal-backdrop" id="title-modal" role="dialog" aria-modal="true" aria-labelledby="modal-logo-fallback" aria-hidden="true">
+        <div class="modal">
+            <button type="button" class="modal-close" id="modal-close" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+
+            <div class="modal-hero" id="modal-hero" data-uia="title-modal-hero">
+                <div class="modal-logo-wrap">
+                    <img class="modal-logo" id="modal-logo" alt="" hidden>
+                    <div class="modal-logo-fallback" id="modal-logo-fallback" hidden></div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <ul class="modal-meta">
+                    <li><span id="modal-year">—</span></li>
+                    <li><span id="modal-rating">—</span></li>
+                    <li><span id="modal-type">Película</span></li>
+                    <li><span id="modal-genre">—</span></li>
+                </ul>
+                <p class="modal-synopsis" id="modal-synopsis"></p>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cta btn-cta--sm" id="modal-cta" data-download>
+                        Comienza ya
+                        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none">
+                            <path fill="currentColor" fill-rule="evenodd" d="M10.437 8.002 4.97 2.532l1.06-1.06 6 6a.75.75 0 0 1 0 1.06l-6 5.999-1.06-1.06z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn-share-modal" id="modal-share">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                            <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/>
+                        </svg>
+                        Compartir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Download modal -->
+    <div class="modal-backdrop" id="download-modal" role="dialog" aria-modal="true" aria-labelledby="download-modal-title" aria-hidden="true">
+        <div class="modal modal--download">
+            <button type="button" class="modal-close" id="download-modal-close" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+
+            <div class="download-modal-body">
+                <img class="download-modal-title-logo" id="download-modal-title" src="assets/modal-lzplay-wordmark.png" alt="lzplay" width="220" height="56">
+                <p class="download-modal-copy">Instala la última versión disponible para Android.</p>
+
+                <div class="download-version-card">
+                    <span class="download-version-label">Versión disponible</span>
+                    <span class="download-version-value" id="download-version">Cargando…</span>
+                </div>
+
+                <a class="btn-cta download-apk-btn" id="download-apk-link" href="https://lzplayhd.online/LzPlay.apk" download>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M12 3v12M7 10l5 5 5-5M5 21h14" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Descargar APK
+                </a>
+                <p class="download-modal-note">Archivo: LzPlay.apk · Android</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada" aria-hidden="true">
+        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Cerrar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <img class="lightbox-img" id="lightbox-img" alt="">
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/app.js" defer></script>
+</body>
+</html>
